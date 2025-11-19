@@ -50,31 +50,3 @@ def test_nb_emprunts():
     # Cas 3 : rendre un livre
     u.rendre_livre(1)
     assert u.nb_emprunts() == 1
-#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-# def test_creation_utilisateur():
-#     u = Utilisateur("Alice")
-#     assert u.nom == "Alice"
-#     assert u.nb_emprunts() == 0
-#
-# def test_emprunter_livre():
-#     u = Utilisateur("Bob")
-#     u.emprunter_livre(1)
-#     assert u.nb_emprunts() == 1
-#     assert 1 in u.livres_empruntes
-#
-# def test_emprunter_livre_deja_present():
-#     u = Utilisateur("Bob")
-#     u.emprunter_livre(1)
-#     with pytest.raises(ValueError):
-#         u.emprunter_livre(1)
-#
-# def test_rendre_livre():
-#     u = Utilisateur("Alice")
-#     u.emprunter_livre(2)
-#     u.rendre_livre(2)
-#     assert u.nb_emprunts() == 0
-#
-# def test_rendre_livre_non_emprunte():
-#     u = Utilisateur("Alice")
-#     with pytest.raises(ValueError):
-#         u.rendre_livre(99)

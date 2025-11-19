@@ -53,29 +53,3 @@ def test_rendre():
     livre2.rendre()
     assert livre2.status == "disponible"
 
-#*****$$$$$$$$$$$$$$$$$$supprimer$$$$$$$$$$$$$$
-# def test_creation_livre():
-#     livre = Livre("1984", "George Orwell")
-#     assert livre.titre == "1984"
-#     assert livre.auteur == "George Orwell"
-#     assert livre.status == "disponible"
-#     assert livre.est_disponible()
-#
-# def test_emprunter_livre():
-#     livre = Livre("Le Petit Prince", "Antoine de Saint-Exupéry")
-#     livre.emprunter()
-#     assert livre.status == "emprunté"
-#     assert not livre.est_disponible()
-#
-# def test_emprunter_deja_emprunte():
-#     livre = Livre("1984", "George Orwell")
-#     livre.emprunter()
-#     with pytest.raises(ValueError):
-#         livre.emprunter()
-#
-# def test_rendre_livre():
-#     livre = Livre("Python", "Jean Dupont")
-#     livre.emprunter()
-#     livre.rendre()
-#     assert livre.status == "disponible"
-#     assert livre.est_disponible()

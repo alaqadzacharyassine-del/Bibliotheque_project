@@ -1,7 +1,7 @@
-# 📚 Gestion d'une Librairie
+ 📚 Gestion d'une Librairie
 ---
 ## 🎯 Objectif
-Ce projet consiste à concevoir un programme Python simulant la gestion d'une bibliothèque de manière bien typé. C'est a dire qu'on veut toutes les docstrings ainsi que tester ce qu'on code via pytest.  
+- Ce projet consiste à concevoir un programme Python simulant la gestion d'une bibliothèque de manière bien typé. C'est a dire qu'on veut toutes les docstrings ainsi que tester ce qu'on code via pytest.  
 Le programme modélise les **livres**, les **utilisateurs**, et leurs interactions : emprunts, retours.
 ---
 ## 🧩 Description générale
@@ -15,7 +15,7 @@ Et leurs interactions : **emprunter et rendre des livres**.
 ---
 
 ## 📂 Arborescence du projet
-Voici une arborescence type de votre projet Python :
+Voici l'arborescence de notre projet Python :
 ```
 │ 
 │ ── core/                   # Logique métier principale

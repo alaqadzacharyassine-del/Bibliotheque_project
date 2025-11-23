@@ -10,6 +10,7 @@ avec un peu plus de livres et utlisateurs.
 """
 
 from bibliotheque_project.core.bibliotheque import Bibliotheque
+from bibliotheque_project.models.livre import StatusLivre
 
 
 def sep(title: str) -> None:
@@ -146,7 +147,7 @@ def run_demo():
     else:
         print("Livres disponibles :")
         for livre in disponibles:
-            print(f"ID : {livre.id} | Titre : {livre.titre} | Auteur : {livre.auteur} | Status : {livre.status}")
+            print(f"ID : {livre.id} | Titre : {livre.titre} | Auteur : {livre.auteur} | Status : {livre.status.name}")
 
     sep("3b. Emprunts définis manuellement")
     simu_emprunts(biblio, utilisateurs, livres)
@@ -160,7 +161,7 @@ def run_demo():
     else:
         print("Livres disponibles :")
         for livre in disponibles:
-            print(f"ID : {livre.id} | Titre : {livre.titre} | Auteur : {livre.auteur} | Status : {livre.status}")
+            print(f"ID : {livre.id} | Titre : {livre.titre} | Auteur : {livre.auteur} | Status : {livre.status.name}")
 
     sep("4. Tentative d'emprunt impossible : livre déjà emprunté")
     try:
@@ -211,9 +212,9 @@ def run_demo():
         print(livre)
 
     sep("10. Statut forcé")
-    biblio.modifier_status(livres[20].id, "emprunté")
+    biblio.modifier_status(livres[20].id, StatusLivre.EMPRUNTE)
     print(biblio._livres[livres[20].id])
-    biblio.modifier_status(livres[20].id, "disponible")
+    biblio.modifier_status(livres[20].id, StatusLivre.DISPONIBLE)
     print(biblio._livres[livres[20].id])
 
     sep("11. Statistiques")

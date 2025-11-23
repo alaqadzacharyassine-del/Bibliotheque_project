@@ -9,7 +9,7 @@ class Utilisateur:
 
     def __init__(self, nom: str)->None:
         """
-        Crée un nouvel utilisateur avec un ID unique attribué automatique, un nom et
+        Crée un nouvel utilisateur avec un ID unique attribué automatiquement, un nom et
         une liste de livre emprunté qui est vide au départ car il a emprunté aucun livre avant d'etre créer.
 
         Args:
@@ -30,6 +30,9 @@ class Utilisateur:
 
         Args:
             livre_id (int): L'identifiant du livre a emprunter.
+
+        Raises:
+            ValueError: Si le livre est déja emprunté.
 
         Returns:
             None

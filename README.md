@@ -112,18 +112,44 @@ Le programme peut afficher des statistiques globales :
 
 ## ⚙️ Pré-requis
 - Python 3.8 ou supérieur  
-- Bibliothèques Python standard (pas de dépendances externes nécessaires)  
+- Bibliothèques Python standard
 - Pytest
+- Matplotlib
 ---
 
 ## 📚 Guide d'utilisation
-- Suivre les instructions affichées dans le terminal pour ajouter des livres, créer des utilisateurs, emprunter ou rendre des livres.
+- Pour utiliser toutes les fonctions/méthodes codé vous pouvez éxécuter les scripts se trouvant dans le dossier "demo" ou créer un nouveau dossier en important la bibliothèque avec la commande
+```
+from bibliotheque_project.core.bibliotheque import Bibliotheque
+```
 - Les fonctions principales sont documentées dans le code avec des docstrings pour faciliter leur compréhension.
 ---
+
+## 💡Conseil de lecture et compréhension du code
+- Pour lire le code et le comprendre de façon efficace nous vous conseillons de le lire en suivant ce chemin
+```
+1-bibliotheque_project.models.livre.py
+2-bibliotheque_project.models.utilisateur.py
+3-bibliotheque_project.core.bibliotheque.py
+4-bibliotheque_project.test.test_livre.py
+5-bibliotheque_project.test.test_utilisateur.py
+6-bibliotheque_project.test.test_bibliotheque.py
+7-bibliotheque_project.demo1_petite_base_donnee.py
+8-bibliotheque_project.demo2_base_donnee_plus_grande.py
+9-bibliotheque_project.demo3_emprunt_aleatoire.py
+```
+
+Les fichiers ci-dessous servent a l'importation de nos class et méthodes
+```
+__init__.py
+```
+
+Le fichier test.conftest.py sert a reinetialiser l'ID pour nos test pytest. 
+
 ## ⭐ Remerciements
 - Nous souhaitons remercier notre enseignant en python qui nous à proposé ce projet : Baptiste Gauthier
 
 ---
 ## 👥 Contributeurs
 - Développeur principal : Alaqad Zachary, Sabi Yanis et Michon Louis
-- Contact : alaqadzacharyassine@gmail.com
+- Contact : alaqadzacharyassine@gmail.com, yanissabi4@gmail.com, louismichon28@gmail.com

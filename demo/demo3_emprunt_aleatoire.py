@@ -11,6 +11,7 @@ Scénario couvert:
 """
 
 from bibliotheque_project.core.bibliotheque import Bibliotheque
+from bibliotheque_project.models.livre import StatusLivre
 import random
 
 
@@ -88,7 +89,7 @@ def random_emprunts(biblio: Bibliotheque, utilisateurs, livres, max_per_user=6, 
             if nb <= 0:
                 break
             livre = biblio._livres.get(lid)
-            if livre and livre.est_disponible():
+            if livre and livre.status == StatusLivre.DISPONIBLE:
                 try:
                     biblio.emprunter(utilisateur.id, lid)
                     nb -= 1
@@ -129,8 +130,8 @@ def run_demo():
     for utilisateur in biblio.lister_utilisateurs():
         print(f"{utilisateur.nom} (id={utilisateur.id}) -> emprunts: {utilisateur.livres_empruntes}")
 
-    livre_emprunte = next((livre for livre in livres if not livre.est_disponible()), None)
-    livre_disponible = next((livre for livre in livres if livre.est_disponible()), None)
+    livre_emprunte = next((livre for livre in livres if livre.status == StatusLivre.EMPRUNTE), None)
+    livre_disponible = next((livre for livre in livres if livre.status == StatusLivre.DISPONIBLE), None)
 
     sep("4. Tentative de suppression d'un livre emprunté (doit échouer)")
     if livre_emprunte:
@@ -193,9 +194,9 @@ def run_demo():
     remaining = next(iter(biblio.lister_tous_les_livres()), None)
     if remaining:
         print("Avant:", remaining)
-        biblio.modifier_status(remaining.id, "emprunté")
+        biblio.modifier_status(remaining.id, StatusLivre.EMPRUNTE)
         print("Après forçage à emprunté:", biblio._livres[remaining.id])
-        biblio.modifier_status(remaining.id, "disponible")
+        biblio.modifier_status(remaining.id, StatusLivre.DISPONIBLE)
         print("Après remise à disponible:", biblio._livres[remaining.id])
 
     sep("10. Recherches exemples")

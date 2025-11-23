@@ -12,6 +12,7 @@ Scénarios couverts :
 
 """
 from bibliotheque_project.core.bibliotheque import Bibliotheque
+from bibliotheque_project.models.livre import StatusLivre
 
 
 def sep(title: str) -> None:
@@ -67,7 +68,7 @@ def run_demo()->None:
     else:
         print("Livres disponibles :")
         for livre in disponibles:
-            print(f"ID : {livre.id} | Titre : {livre.titre} | Auteur : {livre.auteur} | Status : {livre.status}")
+            print(f"ID : {livre.id} | Titre : {livre.titre} | Auteur : {livre.auteur} | Status : {livre.status.name}")
 
 
     sep("3b. Emprunt réussi")
@@ -87,7 +88,7 @@ def run_demo()->None:
     else:
         print("Livres disponibles :")
         for livre in disponibles:
-            print(f"ID : {livre.id} | Titre : {livre.titre} | Auteur : {livre.auteur} | Status : {livre.status}")
+            print(f"ID : {livre.id} | Titre : {livre.titre} | Auteur : {livre.auteur} | Status : {livre.status.name}")
 
 
     sep("4. Emprunt impossible : livre déjà emprunté")
@@ -180,11 +181,11 @@ def run_demo()->None:
     if all_books:
         target = all_books[0]
         print(f"Statut avant: {target}")
-        biblio.modifier_status(target.id, "emprunté")
-        print("Statut forcé à 'emprunté' ->", biblio._livres[target.id])
+        biblio.modifier_status(target.id, StatusLivre.EMPRUNTE)
+        print("Statut forcé à 'EMPRUNTE' ->", biblio._livres[target.id])
         # Remettre à dispo
-        biblio.modifier_status(target.id, "disponible")
-        print("Statut remis à 'disponible' ->", biblio._livres[target.id])
+        biblio.modifier_status(target.id, StatusLivre.DISPONIBLE)
+        print("Statut remis à 'DISPONIBLE' ->", biblio._livres[target.id])
 
     sep("11. Statistiques")
     print("Nombre total de livres:", biblio.nombre_total_livres())

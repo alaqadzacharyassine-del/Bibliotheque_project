@@ -1,5 +1,5 @@
 import pytest
-from bibliotheque_project.models.livre import Livre
+from bibliotheque_project.models.livre import Livre, StatusLivre
 
 def test_est_disponible():
     """
@@ -7,13 +7,11 @@ def test_est_disponible():
     est disponible et False si le livre est emprunté.
     """
     # Livre disponible
-    livre1 = Livre("1984", "George Orwell")
-    livre1.status = "disponible"
+    livre1 = Livre("1984", "George Orwell", status=StatusLivre.DISPONIBLE)
     assert livre1.est_disponible() is True
 
     # Livre emprunté
-    livre2 = Livre("Harry Potter", "J.K. Rowling")
-    livre2.status = "emprunté"
+    livre2 = Livre("Harry Potter", "J.K. Rowling", status=StatusLivre.EMPRUNTE)
     assert livre2.est_disponible() is False
 
 def test_emprunter():
@@ -23,14 +21,12 @@ def test_emprunter():
     est déjà emprunté.
     """
     # Cas 1 : livre disponible
-    livre = Livre("1984", "George Orwell")
-    livre.status = "disponible"
+    livre = Livre("1984", "George Orwell", status=StatusLivre.DISPONIBLE)
     livre.emprunter()
-    assert livre.status == "emprunté"
+    assert livre.status == StatusLivre.EMPRUNTE
 
     # Cas 2 : livre déjà emprunté
-    livre2 = Livre("Harry Potter", "J.K. Rowling")
-    livre2.status = "emprunté"
+    livre2 = Livre("Harry Potter", "J.K. Rowling", status=StatusLivre.EMPRUNTE)
     with pytest.raises(ValueError) as excinfo:
         livre2.emprunter()
     assert "n'est pas disponible" in str(excinfo.value)
@@ -42,14 +38,11 @@ def test_rendre():
     le statut reste inchangé.
     """
     # Cas 1 : livre emprunté
-    livre = Livre("1984", "George Orwell")
-    livre.status = "emprunté"
+    livre = Livre("1984", "George Orwell", status=StatusLivre.EMPRUNTE)
     livre.rendre()
-    assert livre.status == "disponible"
+    assert livre.status == StatusLivre.DISPONIBLE
 
     # Cas 2 : livre déjà disponible
-    livre2 = Livre("Harry Potter", "J.K. Rowling")
-    livre2.status = "disponible"
+    livre2 = Livre("Harry Potter", "J.K. Rowling", status=StatusLivre.DISPONIBLE)
     livre2.rendre()
-    assert livre2.status == "disponible"
-
+    assert livre2.status == StatusLivre.DISPONIBLE

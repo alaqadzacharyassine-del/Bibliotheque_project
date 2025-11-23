@@ -1,7 +1,7 @@
 import pytest
 from collections import Counter
 from bibliotheque_project.core.bibliotheque import Bibliotheque
-from bibliotheque_project.models.livre import Livre
+from bibliotheque_project.models.livre import Livre, StatusLivre
 from unittest.mock import patch
 
 def test_ajouter_livre():
@@ -16,6 +16,7 @@ def test_ajouter_livre():
     assert livre.id in biblio._livres
     assert biblio._livres[livre.id].titre == "1984"
     assert biblio._livres[livre.id].auteur == "George Orwell"
+    assert biblio._livres[livre.id].status == StatusLivre.DISPONIBLE
 
 
 def test_supprimer_livre_disponible():
@@ -59,18 +60,18 @@ def test_supprimer_livre_inexistant():
 def test_modifier_status_valide():
     """
     Vérifie que le statut d'un livre peut être modifié correctement
-    en 'disponible' ou 'emprunté'.
+    en StatusLivre.DISPONIBLE ou StatusLivre.EMPRUNTE.
     """
     biblio = Bibliotheque()
     livre = biblio.ajouter_livre("1984", "George Orwell")
 
     # Modifier le statut en "emprunté"
-    biblio.modifier_status(livre.id, "emprunté")
-    assert biblio._livres[livre.id].status == "emprunté"
+    biblio.modifier_status(livre.id, StatusLivre.EMPRUNTE)
+    assert biblio._livres[livre.id].status == StatusLivre.EMPRUNTE
 
     # Modifier le statut en "disponible"
-    biblio.modifier_status(livre.id, "disponible")
-    assert biblio._livres[livre.id].status == "disponible"
+    biblio.modifier_status(livre.id, StatusLivre.DISPONIBLE)
+    assert biblio._livres[livre.id].status == StatusLivre.DISPONIBLE
 
 def test_modifier_status_invalide():
     """
@@ -80,7 +81,7 @@ def test_modifier_status_invalide():
     livre = biblio.ajouter_livre("1984", "George Orwell")
 
     # Statut invalide doit renvoyer une ValueError
-    with pytest.raises(ValueError, match="Status invalide. Utilisez 'disponible' ou 'emprunté'."):
+    with pytest.raises(ValueError, match="Status invalide. Utilisez StatusLivre.DISPONIBLE ou StatusLivre.EMPRUNTE."):
         biblio.modifier_status(livre.id, "perdu")
 
 def test_modifier_status_livre_inexistant():
@@ -91,7 +92,7 @@ def test_modifier_status_livre_inexistant():
 
     # Livre inexistant doit renvoyer un  KeyError
     with pytest.raises(KeyError, match="Aucun livre avec id=999."):
-        biblio.modifier_status(999, "disponible")
+        biblio.modifier_status(999, StatusLivre.DISPONIBLE)
 
 def test_lister_tous_les_livres():
     """
@@ -329,7 +330,7 @@ def test_emprunter():
 
     # Cas 1 : emprunt réussi
     biblio.emprunter(u1.id, livre1.id)
-    assert livre1.status == "emprunté"
+    assert livre1.status == StatusLivre.EMPRUNTE
     assert livre1.id in u1.livres_empruntes
 
     # Cas 2 : emprunter un livre déjà emprunté
@@ -361,7 +362,7 @@ def test_rendre():
 
     # Cas 1 : rendre le livre correctement
     biblio.rendre(u1.id, livre1.id)
-    assert livre1.status == "disponible"
+    assert livre1.status == StatusLivre.DISPONIBLE
     assert livre1.id not in u1.livres_empruntes
 
     # Cas 2 : tenter de rendre un livre non emprunté par l'utilisateur

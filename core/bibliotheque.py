@@ -1,8 +1,8 @@
 from typing import List, Dict
 from collections import Counter
 import matplotlib.pyplot as plt
-from bibliotheque_project.models.livre import Livre
 from bibliotheque_project.models.utilisateur import Utilisateur
+from bibliotheque_project.models.livre import Livre, StatusLivre
 
 class Bibliotheque:
     """
@@ -61,13 +61,13 @@ class Bibliotheque:
         del self._livres[livre_id]
         return True
 
-    def modifier_status(self, livre_id: int, status: str) -> None:
+    def modifier_status(self, livre_id: int, status: StatusLivre) -> None:
         """
         Modifie le statut du livre (disponible/emprunté).
 
         Args:
             livre_id (int) : ID du livre dont on doit modifier le statut.
-            status (str) : Nouveaux statut du livre ('disponible' ou 'emprunté').
+            status (StatusLivre) : Nouveaux statut du livre (StatusLivre.DISPONIBLE ou StatusLivre.EMPRUNTE).
 
         Raises:
             KeyError: Si le livre n'existe pas.
@@ -76,8 +76,8 @@ class Bibliotheque:
         Returns:
             None
         """
-        if status not in ("disponible", "emprunté"):
-            raise ValueError("Status invalide. Utilisez 'disponible' ou 'emprunté'.")
+        if not isinstance(status, StatusLivre):
+            raise ValueError("Status invalide. Utilisez StatusLivre.DISPONIBLE ou StatusLivre.EMPRUNTE.")
         livre = self._livres.get(livre_id)
         if livre is None:
             raise KeyError(f"Aucun livre avec id={livre_id}.")
@@ -340,7 +340,7 @@ class Bibliotheque:
             print("Aucun livre en base.")
             return
         for livre in sorted(self._livres.values(), key=lambda x: x.id):
-            print(f"ID : {livre.id} | Titre : {livre.titre} | Auteur :  {livre.auteur} | Status : {livre.status}")
+            print(f"ID : {livre.id} | Titre : {livre.titre} | Auteur :  {livre.auteur} | Status : {livre.status.value}")
 
     def affiche_utilisateurs(self) -> None:
         """

@@ -17,10 +17,10 @@ from bibliotheque_project.models.livre import StatusLivre
 
 def sep(title: str) -> None:
     """
-    Creé des séparateur afin de garantir un meilleur affichage lors de la démonstration ci dessous
+    Crée des séparateurs afin de garantir un meilleur affichage lors de la démonstration ci-dessous
 
     Args:
-        title (str):Chaine de caractère qu'on souhaite mettre en valeur
+        title (str):Chaîne de caractère qu'on souhaite mettre en valeur
 
     Returns:
         None
@@ -32,7 +32,7 @@ def sep(title: str) -> None:
 
 def run_demo()->None:
     """"
-    Génère la demonstration de la gestion de notre bibliothèque avec toutes les fonctionnalités possibles et impossible:
+    Génère la demonstration de la gestion de notre bibliothèque avec toutes les fonctionnalités possibles et impossibles:
     - ajout / suppression de livres (possible et impossible)
     - création / suppression d'utilisateurs (possible et impossible)
     - emprunts / retours (réussis et cas d'erreur)
@@ -53,13 +53,13 @@ def run_demo()->None:
     livre_2 = biblio.ajouter_livre("1984", "George Orwell")
     livre_3 = biblio.ajouter_livre("Clean Code", "Robert C. Martin")
     print("Livres ajoutés :")
-    biblio.affiche_livres() #On regarde si les livres on bien été ajouté.
+    biblio.affiche_livres() #On regarde si les livres ont bien été ajoutés.
 
     sep("2. Création d'utilisateurs")
     utilisateur_1 = biblio.creer_utilisateur("Alice")
     utilisateur_2 = biblio.creer_utilisateur("Bob")
     print("Utilisateurs :")
-    biblio.affiche_utilisateurs() #On regarde si les utilisateurs on bien été ajouté
+    biblio.affiche_utilisateurs() #On regarde si les utilisateurs ont bien été ajoutés.
 
     sep("3a. Livres disponibles avant emprunt")
     disponibles = biblio.lister_livres_disponibles()
@@ -78,8 +78,8 @@ def run_demo()->None:
         print("Emprunt effectué")
     except Exception as e:
         print("Erreur inattendue :", e)
-    biblio.affiche_livres() #On regarde les livres et remarque que le statut du livre 1 est bien emprunté
-    biblio.affiche_utilisateurs() #Alice a bien le livre 1 dans sa liste d'emprunt
+    biblio.affiche_livres() #On regarde les livres et remarque que le statut du livre 1 est bien "emprunté".
+    biblio.affiche_utilisateurs() #Alice a bien le livre 1 dans sa liste d'emprunts.
 
     sep("3c. Livres disponibles après emprunt")
     disponibles = biblio.lister_livres_disponibles()
@@ -178,14 +178,14 @@ def run_demo()->None:
     sep("10. Modification de statut")
     # Forcer changement de statut
     all_books = biblio.lister_tous_les_livres()
-    if all_books:
-        target = all_books[0]
-        print(f"Statut avant: {target}")
-        biblio.modifier_status(target.id, StatusLivre.EMPRUNTE)
-        print("Statut forcé à 'EMPRUNTE' ->", biblio._livres[target.id])
+    if all_books: #Si il existe au moins un livre
+        premier_livre = all_books[0]
+        print(f"Statut avant: {premier_livre}")
+        biblio.modifier_status(premier_livre.id, StatusLivre.EMPRUNTE)
+        print("Statut forcé à 'EMPRUNTE' ->", biblio._livres[premier_livre.id])
         # Remettre à dispo
-        biblio.modifier_status(target.id, StatusLivre.DISPONIBLE)
-        print("Statut remis à 'DISPONIBLE' ->", biblio._livres[target.id])
+        biblio.modifier_status(premier_livre.id, StatusLivre.DISPONIBLE)
+        print("Statut remis à 'DISPONIBLE' ->", biblio._livres[premier_livre.id])
 
     sep("11. Statistiques")
     print("Nombre total de livres:", biblio.nombre_total_livres())

@@ -15,12 +15,12 @@ class Livre:
 
     def __init__(self, titre: str, auteur: str, status: StatusLivre = StatusLivre.DISPONIBLE) -> None:
         """
-        Crée un nouveau livre caractérisé par un ID unique automatique, un titre, un auteur et un status (disponible par défaut).
+        Crée un nouveau livre caractérisé par un ID unique automatique, un titre, un auteur et un statut (disponible par défaut).
 
         Args:
             titre (str): Le titre du livre.
             auteur (str): L'auteur du livre.
-            status (StatusLivre, optionnel): Status du livre. Par défaut StatusLivre.DISPONIBLE.
+            status (StatusLivre, optionnel): Statut du livre. Par défaut StatusLivre.DISPONIBLE.
 
         Returns:
             None
@@ -46,13 +46,13 @@ class Livre:
     def emprunter(self) -> None:
         """
         Change le statut du livre lorsqu'il est emprunté quand il est disponible.
-        Renvoie une erreur si un livre non disponible tente d'etre emprunter
+        Renvoie une erreur si un livre non disponible tente d'etre emprunté
 
         Args:
             Aucun
 
         Raises:
-            ValueError: Si un livre non disponible tente d'etre emprunter.
+            ValueError: Si un livre non disponible tente d'etre emprunté.
 
         Returns:
             None
@@ -63,7 +63,7 @@ class Livre:
 
     def rendre(self) -> None:
         """
-        Permet de rendre le livre et donc de re mettre son statut disponible.
+        Permet de rendre le livre et donc de remettre son statut disponible.
 
         Args:
             Aucun

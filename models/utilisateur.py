@@ -10,7 +10,7 @@ class Utilisateur:
     def __init__(self, nom: str)->None:
         """
         Crée un nouvel utilisateur avec un ID unique attribué automatiquement, un nom et
-        une liste de livre emprunté qui est vide au départ car il a emprunté aucun livre avant d'etre créer.
+        une liste de livres empruntés qui est vide au départ car il n'a emprunté aucun livre avant d'etre crée.
 
         Args:
             nom (str): Nom de l'utilisateur.
@@ -29,7 +29,7 @@ class Utilisateur:
         Renvoie une erreur si le livre est déjà emprunté.
 
         Args:
-            livre_id (int): L'identifiant du livre a emprunter.
+            livre_id (int): L'identifiant du livre à emprunter.
 
         Raises:
             ValueError: Si le livre est déja emprunté.
@@ -38,7 +38,7 @@ class Utilisateur:
             None
         """
         if livre_id in self.livres_empruntes:
-            raise ValueError(f"L'utilisateur {self.nom} (id={self.id}) a déjà le livre id={livre_id}.")
+            raise ValueError(f"L'utilisateur {self.nom} (id={self.id}) a déjà emprunté le livre id={livre_id}.")
         self.livres_empruntes.append(livre_id)
 
     def rendre_livre(self, livre_id: int) -> None:
@@ -68,7 +68,7 @@ class Utilisateur:
             Aucun
 
         Returns:
-            int: Le nombre de livre emprunté par l'utilisateur.
+            int: Le nombre de livres empruntés par l'utilisateur.
         """
         return len(self.livres_empruntes)
 

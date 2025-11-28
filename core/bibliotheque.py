@@ -67,7 +67,7 @@ class Bibliotheque:
 
         Args:
             livre_id (int) : ID du livre dont on doit modifier le statut.
-            status (StatusLivre) : Nouveaux statut du livre (StatusLivre.DISPONIBLE ou StatusLivre.EMPRUNTE).
+            status (StatusLivre) : Nouveau statut du livre (StatusLivre.DISPONIBLE ou StatusLivre.EMPRUNTE).
 
         Raises:
             KeyError: Si le livre n'existe pas.
@@ -96,24 +96,24 @@ class Bibliotheque:
 
     def lister_livres_disponibles(self) -> List[Livre]:
         """
-        Retourne la liste des livres disponibles, c'est a dire non emprunté.
+        Retourne la liste des livres disponibles, c'est à dire non emprunté.
         Args:
             Aucun
 
         Returns:
-            List[Livre]: Liste de tous les livres disponibles a l'emprunt.
+            List[Livre]: Liste de tous les livres disponibles à l'emprunt.
         """
         return [livre for livre in self._livres.values() if livre.est_disponible()]
 
     def rechercher_par_titre(self, query: str) -> List[Livre]:
         """
-        Recherche des livres dont le titre contient la chaine fournie (insensible à la casse).
+        Recherche des livres dont le titre contient la chaîne fournie (insensible à la casse).
 
         Args:
-            query (str) : Chaine de recherche qui se retrouve dans le titre
+            query (str) : Chaîne de recherche qui se retrouve dans le titre
 
         Returns:
-            List[Livre]: Liste des livres correspondant, c'est a dire retrouvant la chaine fournie dans leurs titres.
+            List[Livre]: Liste des livres correspondants, c'est à dire retrouvant la chaine fournie dans leurs titres.
         """
         q = query.lower() #Convertie la chaine de caractère en minuscule
         return [livre for livre in self._livres.values() if q in livre.titre.lower()]
@@ -126,7 +126,7 @@ class Bibliotheque:
             query (str): Chaine de recherche qui se retrouve dans l'auteur
 
         Returns:
-            List[Livre]: Liste des livres correspondant, c'est a dire retrouvant la chaine fournie dans l'auteur.
+            List[Livre]: Liste des livres correspondants, c'est à dire retrouvant la chaine fournie dans l'auteur.
         """
         q = query.lower()
         return [livre for livre in self._livres.values() if q in livre.auteur.lower()]
@@ -139,7 +139,7 @@ class Bibliotheque:
             query (str): Chaîne de recherche contenant les mots clés souhaités.
 
         Returns:
-            List[Livre]: Liste des livres correspondants, c'est a dire ou les mots clé apparaissent dans l'auteur ou le titre du livre.
+            List[Livre]: Liste des livres correspondants, c'est à dire où les mots clé apparaissent dans l'auteur ou le titre du livre.
         """
         q = query.lower()
         return [livre for livre in self._livres.values() if q in livre.titre.lower() or q in livre.auteur.lower()]
@@ -196,7 +196,7 @@ class Bibliotheque:
     # ---------- Emprunts / Retours ----------
     def emprunter(self, utilisateur_id: int, livre_id: int) -> None:
         """
-        Permet à un utilisateur si il existe d'emprunter un livre si ce dernier est disponible et existe
+        Permet à un utilisateur s'il existe d'emprunter un livre si ce dernier est disponible et existe
         Met à jour le statut du livre et la liste d'emprunts de l'utilisateur.
 
         Args:

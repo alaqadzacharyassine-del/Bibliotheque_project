@@ -1,7 +1,7 @@
  📚 Gestion d'une Librairie
 ---
 ## 🎯 Objectif
-- Ce projet consiste à concevoir un programme Python simulant la gestion d'une bibliothèque de manière bien typé. C'est a dire qu'on veut toutes les docstrings ainsi que tester ce qu'on code via pytest.  
+- Ce projet consiste à concevoir un programme Python simulant la gestion d'une bibliothèque de manière bien typée. C'est à dire qu'on veut toutes les docstrings ainsi que tester ce qu'on code via pytest.  
 Le programme modélise les **livres**, les **utilisateurs**, et leurs interactions : emprunts, retours.
 ---
 ## 🧩 Description générale
@@ -118,7 +118,7 @@ Le programme peut afficher des statistiques globales :
 ---
 
 ## 📚 Guide d'utilisation
-- Pour utiliser toutes les fonctions/méthodes codé vous pouvez éxécuter les scripts se trouvant dans le dossier "demo" ou créer un nouveau dossier en important la bibliothèque avec la commande
+- Pour utiliser toutes les fonctions/méthodes codées, vous pouvez éxécuter les scripts se trouvant dans le dossier "demo" ou créer un nouveau dossier en important la bibliothèque avec la commande
 ```
 from bibliotheque_project.core.bibliotheque import Bibliotheque
 ```
@@ -144,7 +144,7 @@ Les fichiers ci-dessous servent a l'importation de nos class et méthodes
 __init__.py
 ```
 
-Le fichier test.conftest.py sert a reinetialiser l'ID pour nos test pytest. 
+Le fichier test.conftest.py sert a reinitialiser l'ID pour nos test pytest. 
 
 ## ⭐ Remerciements
 - Nous souhaitons remercier notre enseignant en python qui nous à proposé ce projet : Baptiste Gauthier

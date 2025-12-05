@@ -106,6 +106,7 @@ Le programme peut afficher des statistiques globales :
 ## 🧪 Remarques générales
 - Vous pouvez générer des données "fake" pour vos tests à l'aide de GPT ou d'un script Python.  
 - Le code est fait pour rester **maintenable, efficace et intuitif**.
+- Les livres utilisés comme exemples ont été sélectionnés par ChatGPT
 
 
 ---

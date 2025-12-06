@@ -119,7 +119,7 @@ Le programme peut afficher des statistiques globales :
 ---
 
 ## 📚 Guide d'utilisation
-- Pour utiliser toutes les fonctions/méthodes codées, vous pouvez éxécuter les scripts se trouvant dans le dossier "demo" ou créer un nouveau dossier en important la bibliothèque avec la commande
+- Pour utiliser toutes les fonctions/méthodes codées, vous pouvez exécuter les scripts se trouvant dans le dossier "demo" ou créer un nouveau dossier en important la bibliothèque avec la commande
 ```
 from bibliotheque_project.core.bibliotheque import Bibliotheque
 ```
@@ -140,17 +140,17 @@ from bibliotheque_project.core.bibliotheque import Bibliotheque
 9-bibliotheque_project.demo3_emprunt_aleatoire.py
 ```
 
-Les fichiers ci-dessous servent a l'importation de nos class et méthodes
+Les fichiers ci-dessous servent à l'importation de nos class et méthodes
 ```
 __init__.py
 ```
 
-Le fichier test.conftest.py sert a reinitialiser l'ID pour nos test pytest. 
+Le fichier test.conftest.py sert à réinitialiser l'ID pour nos test pytest. 
 
 ## ⭐ Remerciements
-- Nous souhaitons remercier notre enseignant en python qui nous à proposé ce projet : Baptiste Gauthier
+- Nous souhaitons remercier notre enseignant en python qui nous a proposé ce projet : Baptiste Gauthier
 
 ---
 ## 👥 Contributeurs
 - Développeur principal : Alaqad Zachary, Sabi Yanis et Michon Louis
-- Contact : alaqadzacharyassine@gmail.com, yanissabi4@gmail.com, louismichon28@gmail.com
+- Contact : alaqadzacharyassine@gmail.com, yanissabi4@gmail.com, louis.michon28@gmail.com
